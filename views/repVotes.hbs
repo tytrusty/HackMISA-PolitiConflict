@@ -1,0 +1,63 @@
+<header class="text-center width-80vw center-block">
+    <a href="{{landingPageUrl}}">
+        <h1 class="font-deemphasize">Find Your Representatives</h1>
+    </a>    
+</header>
+<main class="container-fluid width-80vw">   
+    <section class="row text-center"> 
+        <div class="rep-pic col-xs-12 padding-top-10 padding-bot-10 background-eggshell-to-white soft-borders-5px gray-border-1px">
+            <img class="soft-borders-5px" src="https://theunitedstates.io/images/congress/225x275/{{bioguideId}}.jpg" alt="Picture of representative">
+            <div class="font-size-2em">{{repInfo.fullName}}</div>
+            <div class="font-deemphasize">{{repInfo.title}}</div>
+            <div class="font-deemphasize">{{repInfo.party}}</div>
+        </div>
+    
+        <div class="contact-info col-xs-12 padding-top-10 padding-bot-10">
+            <div class="row">
+                <h4 class="col-xs-12">Contact Info</h4>
+            </div>
+            <div class="row">
+                <div class="wrapper background-white padding-around-10 text-left soft-borders-5px gray-border-1px display-inline-block">
+                    <div class="phone-number">
+                        <h5 class="font-deemphasize">Phone Number</h5>
+                        <div>{{repInfo.phone}}</div>
+                    </div>
+                    <div class="website">
+                        <h5 class="font-deemphasize">Website</h5>
+                        <a href="{{repInfo.website}}">
+                            <div>{{repInfo.website}}</div>
+                        </a>
+                    </div>
+                    {{#if repInfo.contactForm}}
+                    <div class="contact-form">
+                        <h5 class="font-deemphasize">Contact Form</h5>
+                        <a href="{{repInfo.contactForm}}">
+                            <div>{{repInfo.contactForm}}</div>
+                        </a>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="row">
+        <h4 class="text-center">Recent Votes</h4>
+        {{#each bills as |bill|}}
+        <article class="bill col-xs-12 vote-box gray-border-1px">
+            <h4 class="bill-id">
+                <a href="{{bill.bill_website}}">
+                    {{bill.bill_id}}
+                </a>
+            </h4>
+            <div class="bill-title">
+                {{bill.bill_title}}
+            </div>
+            <div class="vote-record hidden">
+                {{bill.recorded_vote}}
+            </div>
+        </article>
+        {{/each}}
+    </section>
+</main>

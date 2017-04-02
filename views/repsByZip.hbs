@@ -1,0 +1,67 @@
+    <header class="center-inline">
+    <a href="{{landingPageUrl}}">
+        <h1 class="font-deemphasize">Find Your Representatives</h1>
+            <div id="to-landing-page" class="position-relative display-inline-block padding-bot-10">
+                <div>
+                    Your zipcode: {{zipcode}}
+                </div>
+            </div>
+        </a>
+    </header>
+    <main class="">
+        <section>
+            <div class="center-inline">
+                <h3 class="display-inline-block width-10 padding-top-sides-5-20 max-width-500 background-soft-blue">House</h3>
+            </div>
+            {{#each house as |rep|}}
+            <article class="flex justify-center">
+                <div class="soft-borders-5px width-10 padding-around-20 max-width-500 background-white">
+                    <a href="/rep/?bioguide_id={{rep.bioguideId}}">
+                        <article class="flex align-center justify-center">
+                            <div class="rep-pic margin-right-20">
+                                <img class="soft-borders-5px" src="https://theunitedstates.io/images/congress/225x275/{{rep.bioguideId}}.jpg">
+                            </div>
+                            <div class="rep-info width-40">
+                                <div class="rep-name font-bold font-size-1-2em">
+                                    {{rep.fullName}}
+                                </div>
+                    </a>
+                                <div class="rep-party font-deemphasize">
+                                    {{rep.party}}
+                                </div>
+                            </div>
+                        </article>
+                </div>
+            </article>
+            {{/each}}
+            </div>
+        </section>
+        <section>
+            <div class="center-inline">
+                <h3 class="display-inline-block width-10 padding-top-sides-5-20 max-width-500 background-soft-red">Senate</h3>
+            </div>
+            {{#each senate as |rep|}}
+            <article class="flex justify-center">
+                <div class="soft-borders-5px width-10 padding-around-20 max-width-500 background-white">
+                    <a href="/rep/?bioguide_id={{rep.bioguideId}}">
+                        <article class="flex align-center justify-center">
+                            <div class="rep-pic margin-right-20">
+                                <img class="soft-borders-5px" src="https://theunitedstates.io/images/congress/225x275/{{rep.bioguideId}}.jpg">
+                            </div>
+                            <div class="rep-info width-40">
+                                <div class="rep-name font-bold font-size-1-2em">
+                                    {{rep.fullName}}
+                                </div>
+                    </a>
+                                <div class="rep-party font-deemphasize">
+                                    {{rep.party}}
+                                </div>
+                            </div>
+                        </article>
+                </div>
+            </article>
+            {{/each}}
+        </section>
+    </main>
+    <footer>
+    </footer>

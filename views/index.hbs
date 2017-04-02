@@ -1,0 +1,18 @@
+<header class="text-center font-deemphasize">
+    <a href="{{landingPageUrl}}">
+        <h1 class="font-deemphasize">Find Your Representatives</h1>
+    </a>
+</header>
+<main class="text-center">
+    <p>Type your zipcode below</p>
+    <form id="find-reps" method="get" action="/zip/" class="text-center display-inline-block padding-around-20 padding-top-10 soft-borders-5px small-box-shadow background-soft-white">
+        <div>
+            <label for="zipcode" form="find-reps">Zipcode</label>
+            <div class="zipcode-display flex justify-center"></div>
+            <input type="hidden" id="zipcode" name="zipcode" form="find-reps" placeholder="Zipcode">
+        </div>
+        <div class="submit-wrapper overflow-hidden transition-1s">
+            <button id="zip-submit" type="submit" form="find-reps">Find your reps!</button>
+        </div>
+    </form>
+</main>
