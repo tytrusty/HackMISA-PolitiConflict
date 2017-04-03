@@ -9,7 +9,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const Sunlight = require("@rttomlinson/sunlight_api_wrapper");
 let sunlight  = new Sunlight();
 
-
+var dict= {};
 /* GET home page. */
 router.get('/', function(req, res, next) {
     let bioguideId = req.query.bioguide_id;
@@ -21,20 +21,23 @@ router.get('/', function(req, res, next) {
     Promise.all([repVotes, repInfo]).then(function onFulfill(data) {
         let bills = sunlight.cleanVoteData(data[0]);
         let info = sunlight.cleanRepContactInfo(data[1]);
+
+        var text = '[{"name":"Exxon Mobil","amount":"$50,000"},{"name":"UT Austin","amount":"$20,000"}]';
+        var obj = JSON.parse(text);
     	
-        res.render('repVotes', { "bills" : bills, "bioguideId" : bioguideId, "repInfo" : info, "layout" : "rep_votes_layout.hbs", "landingPageUrl" : landingPageUrl });
         //console.log(JSON.stringify(data[0]));
-        //listCongress(bioguideId);
         for(var key in bills) {
         	var keywords = sunlight.getBillKeywords(bills[key].bill_id);
         	console.log("BILL: " + bills[key].bill_id);
        		Promise.all([keywords]).then(function onFulfill(data) {
-       			console.log(data[0].results[0].keywords);
-       			
-       			//console.log(JSON.stringify(bills[keywords]));
-        	    //console.log(JSON.stringify(keywords));
+       			var id = data[0].results[0].bill_id;
+       			var keywords = data[0].results[0].keywords;
+       			dict[id] = keywords;
+
        		});
         }
+        listCongress(bioguideId, res, bills, obj, bioguideId, info, landingPageUrl);
+
         //}
         //sunlight.getBillKeywords(bill_id) 
 
@@ -45,9 +48,10 @@ router.get('/', function(req, res, next) {
 });
 
 
-function listCongress(bioguideID) {
+function listCongress(bioguideID, res1, bills, obj, bioguideId, info, landingPageUrl) {
   //  ihttps://www.govtrack.us/api/v2/vote_voter/?person=412573&limit=6000&order_by=created&format=json&fields=vote__id,created,option__value,vote__category,vote__chamber,vote__question,vote__number
-
+  var x;
+  var flag = true;
   govTrack.findRole({current : true}, function(err, res) {
     if (!err) {
     	console.log("desired id " + bioguideID);
@@ -58,32 +62,50 @@ function listCongress(bioguideID) {
     		url: url,
    			success: function(json){
       		console.log('getJSON success');
-      		console.log(json);
+      		x = json;
+      		flag = false;
+
+      		for(var keys in bills) {
+      			bills[keys].conflicts = dict[bills[keys].bill_id];
+
+      		}
+      		var donorss = {};
+      		console.log(x);
+      		var counter = 0;
+      		//var text = '[{"name":"Exxon Mobil","amount":"$50,000"},{"name":"UT Austin","amount":"$20,000"}]';
+      		var obj2 = {};
+      		for(var x in json.records) {
+      			
+      			
+      			
+      			obj2[counter] = {};
+      			obj2[counter].name = json.records[x].organization;
+      			obj2[counter].amount = json.records[x].totals;
+      			counter++;
+
+      		}
+
+      		res1.render('repVotes', { "bills" : bills, "donors" : obj2, "bioguideId" : bioguideId, "repInfo" : info, "layout" : "rep_votes_layout.hbs", "landingPageUrl" : landingPageUrl });
+
+
     	 },
     		error: function(error){
       		console.error('An error occured');
       		console.error(error);
+      		flag = false;
     	 },
     		complete: function(){
+    			flag = false;
       		console.log('I\'m invoked in any case after success/error');
     }
-});
-          // for(var val in res.objects[key].person) {
-          //  console.log(val + " value: " + res.objects[key].person[val]);
-          //}
+		});
 
-          /*govTrack.findVoteVoter({person:400222, limit:2000, fields:vote__id}, function(err, res_json) {
-            if (!err) {
-              console.log(JSON.stringify(res_json, null, 4));
-            } else {
-              console.log("error finding voting record");
-            }
-
-          });*/
         }
       }
     }
   });
+  console.log(x);
+
 }
 
 

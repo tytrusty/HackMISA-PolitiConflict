@@ -54,10 +54,31 @@
             <div class="bill-title">
                 {{bill.bill_title}}
             </div>
+            <div class="bill-title">
+                {{bill.conflicts}}
+            </div>
             <div class="vote-record hidden">
                 {{bill.recorded_vote}}
             </div>
         </article>
         {{/each}}
     </section>
+
+    <section class="row">
+        <h4 class="text-center">Donors</h4>
+        {{#each donors as |donor|}}
+        <article class="bill col-xs-12 vote-box gray-border-1px">
+            <h4 class="bill-id">
+                {{donor.name}}
+            </h4>
+            <div class="bill-title">
+                {{donor.amount}}
+            </div>
+            <div class="vote-record hidden">
+                {{donor.amount}}
+            </div>
+        </article>
+        {{/each}}
+    </section>
+
 </main>
