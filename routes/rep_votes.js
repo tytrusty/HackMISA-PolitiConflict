@@ -17,7 +17,16 @@ router.get('/', function(req, res, next) {
     Promise.all([repVotes, repInfo]).then(function onFulfill(data) {
         let bills = sunlight.cleanVoteData(data[0]);
         let info = sunlight.cleanRepContactInfo(data[1]);
-        res.render('repVotes', { "bills" : bills, "bioguideId" : bioguideId, "repInfo" : info, "layout" : "rep_votes_layout.hbs", "landingPageUrl" : landingPageUrl });
+
+
+        console.log(JSON.stringify(bills));
+
+        var text = '[{"name":"Exxon Mobil","amount":"$50,000"},{"name":"UT Austin","amount":"$20,000"}]';
+
+        var obj = JSON.parse(text);
+
+
+        res.render('repVotes', { "bills" : bills, "donors" : obj, "bioguideId" : bioguideId, "repInfo" : info, "layout" : "rep_votes_layout.hbs", "landingPageUrl" : landingPageUrl });
 
     }).catch(function onError(error) {
         console.log(error);
