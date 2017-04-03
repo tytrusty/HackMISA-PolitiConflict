@@ -1,0 +1,76 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@rttomlinson/sunlight_api_wrapper@^1.0.8",
+        "scope": "@rttomlinson",
+        "escapedName": "@rttomlinson%2fsunlight_api_wrapper",
+        "name": "@rttomlinson/sunlight_api_wrapper",
+        "rawSpec": "^1.0.8",
+        "spec": ">=1.0.8 <2.0.0",
+        "type": "range"
+      },
+      "C:\\Users\\Ty\\Desktop\\School\\Hackathon\\PolitiConflict"
+    ]
+  ],
+  "_from": "@rttomlinson/sunlight_api_wrapper@>=1.0.8 <2.0.0",
+  "_id": "@rttomlinson/sunlight_api_wrapper@1.0.8",
+  "_inCache": true,
+  "_location": "/@rttomlinson/sunlight_api_wrapper",
+  "_nodeVersion": "7.6.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/sunlight_api_wrapper-1.0.8.tgz_1488355572270_0.725905928760767"
+  },
+  "_npmUser": {
+    "name": "rttomlinson",
+    "email": "rttomlinson@gmail.com"
+  },
+  "_npmVersion": "4.1.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "@rttomlinson/sunlight_api_wrapper@^1.0.8",
+    "scope": "@rttomlinson",
+    "escapedName": "@rttomlinson%2fsunlight_api_wrapper",
+    "name": "@rttomlinson/sunlight_api_wrapper",
+    "rawSpec": "^1.0.8",
+    "spec": ">=1.0.8 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@rttomlinson/sunlight_api_wrapper/-/sunlight_api_wrapper-1.0.8.tgz",
+  "_shasum": "690cad0c4869df91d74c0d2b296c36711db2286e",
+  "_shrinkwrap": null,
+  "_spec": "@rttomlinson/sunlight_api_wrapper@^1.0.8",
+  "_where": "C:\\Users\\Ty\\Desktop\\School\\Hackathon\\PolitiConflict",
+  "author": "",
+  "dependencies": {
+    "request": "^2.79.0"
+  },
+  "description": "Wrapper functions for the Sunlight API",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "690cad0c4869df91d74c0d2b296c36711db2286e",
+    "tarball": "https://registry.npmjs.org/@rttomlinson/sunlight_api_wrapper/-/sunlight_api_wrapper-1.0.8.tgz"
+  },
+  "gitHead": "55ccb47903ef6ea6c67d02b91d454d04cdcd4fe0",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "rttomlinson",
+      "email": "rttomlinson@gmail.com"
+    }
+  ],
+  "name": "@rttomlinson/sunlight_api_wrapper",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.8"
+}
